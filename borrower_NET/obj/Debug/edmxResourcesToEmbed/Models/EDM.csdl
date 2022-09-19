@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BM_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BorrowersTb">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FundAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FundPurpose" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="UsersTb" Relationship="Self.FK_BorrowersTb_UsersTb" FromRole="BorrowersTb" ToRole="UsersTb" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UsersTb">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Pincode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BorrowersTbs" Relationship="Self.FK_BorrowersTb_UsersTb" FromRole="UsersTb" ToRole="BorrowersTb" />
+  </EntityType>
+  <Association Name="FK_BorrowersTb_UsersTb">
+    <End Role="UsersTb" Type="Self.UsersTb" Multiplicity="0..1" />
+    <End Role="BorrowersTb" Type="Self.BorrowersTb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersTb">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BorrowersTb">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BM_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BorrowersTbs" EntityType="Self.BorrowersTb" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="UsersTbs" EntityType="Self.UsersTb" />
+    <AssociationSet Name="FK_BorrowersTb_UsersTb" Association="Self.FK_BorrowersTb_UsersTb">
+      <End Role="UsersTb" EntitySet="UsersTbs" />
+      <End Role="BorrowersTb" EntitySet="BorrowersTbs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
