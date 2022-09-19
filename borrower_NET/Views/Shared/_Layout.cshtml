@@ -26,13 +26,13 @@
                 @Html.ActionLink("BorrowerNET", "", "", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" >
                     @{
                         if (isLoggedin)
                         {
-                            <li>@Html.ActionLink("Borrower", "", "")</li>
-                            <li>@Html.ActionLink(User.Identity.Name, "Index", "Home")</li>
-                            <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                            <li>@Html.ActionLink("Borrower", "Index", "Borrower")</li>
+                            <li>@Html.ActionLink(User.Identity.Name, "Details", "User")</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Account", new {@style="float-right;"})</li>
 
 
                         }

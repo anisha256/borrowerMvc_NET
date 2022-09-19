@@ -1,0 +1,73 @@
+﻿@model borrower_NET.Models.BorrowersTb
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>Borrower Details</h2>
+<div>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+
+        <h4 style="color:blue;">Personal Information</h4>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+    </dl>
+    <hr />
+    <dl class="dl-horizontal">
+        <h4 style="color:blue">Fund Related Information</h4>
+        <dt>
+            @Html.DisplayNameFor(model => model.FundAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FundPurpose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundPurpose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessType)
+        </dd>
+
+    </dl>
+    <hr />
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
