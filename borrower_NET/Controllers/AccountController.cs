@@ -30,7 +30,7 @@ namespace borrower_NET.Controllers
             if (userExists)
             {
                 FormsAuthentication.SetAuthCookie(u.Username,false);
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index","Borrower");
             }
             ModelState.AddModelError("", "Invalid Credentials");
             return View();

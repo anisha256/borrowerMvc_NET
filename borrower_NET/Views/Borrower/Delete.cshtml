@@ -56,22 +56,27 @@
             @Html.DisplayFor(model => model.BusinessType)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UsersTb.FullName)
-        </dt>
+        @* <dt>
+                @Html.DisplayNameFor(model => model.UsersTb.FullName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UsersTb.FullName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UsersTb.FullName)
+            </dd>
+        *@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions" >
-            <input type="submit" value="Delete"class="btn btn-danger" /> |
-            @Html.ActionLink("Back", "Index")
+        <div class="form-actions">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            
+             @Html.ActionLink("Back", "Index")
+
+            
         </div>
     }
 </div>

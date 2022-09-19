@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<h3>Login</h3>
 
 
 @using (Html.BeginForm()) 
@@ -33,16 +33,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" class="btn btn-default" />
+                <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back", "Index","Home")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

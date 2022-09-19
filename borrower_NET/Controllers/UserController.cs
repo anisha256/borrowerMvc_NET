@@ -12,9 +12,9 @@ namespace borrower_NET.Controllers
         BM_DBEntities entity = new BM_DBEntities(); 
 
         // GET: User/Details/
-        public ActionResult Details(int? id)
+        public ActionResult Details(string username)
         {
-            UsersTb user = entity.UsersTbs.Find(id);
+            UsersTb user = entity.UsersTbs.Find(username);
             return View(user);
         }
     }

@@ -6,10 +6,10 @@
 
 <h2>Borrower List</h2>
 
-    <div class="btn btn-success" style="float:right; margin-bottom:20px;">
-            @Html.ActionLink("Add New", "Create", "Borrower", new {@style= "text-decoration: none; color:white;" })
+    <div  style="float:right; margin-bottom:20px;">
+            @Html.ActionLink("Add New", "Create", "Borrower", new {@style= "text-decoration: none; color:white;" }, new {@class="btn btn-success bi bi-plus"})
     </div>
-
+    
 <table class="table">
     <tr>
         <th>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.FundAmount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary bi bi-pencil-square"})| 
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new {@class = "btn btn-info bi bi-eye"}) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger bi bi-trash" })
             </td>
         </tr>
     }
