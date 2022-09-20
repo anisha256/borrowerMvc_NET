@@ -6,24 +6,26 @@ using System.Web.Security;
 using borrower_NET.Models;
 using System.Linq;
 
+
 namespace borrower_NET.Controllers
 {
     public class AccountController : Controller
     {
         BM_DBEntities entity = new BM_DBEntities();
-        
-        // GET: Account
+ 
+        // GET: Account/Login
         public ActionResult Login()
         {
             return View();
         }
-        public ActionResult Register()
-        {
-            return View();
-        }
+
+        // POST: Account/Login
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel credentials)
         {
+            if (ModelState.IsValid)
+            {
             bool userExists = entity.UsersTbs.Any(x=>x.Username == credentials.Username && x.Pincode == credentials.Pincode);
            //gives one username if present
             UsersTb u = entity.UsersTbs.FirstOrDefault(x => x.Username == credentials.Username && x.Pincode == credentials.Pincode);
@@ -32,18 +34,38 @@ namespace borrower_NET.Controllers
                 FormsAuthentication.SetAuthCookie(u.Username,false);
                 return RedirectToAction("Index","Borrower");
             }
-            ModelState.AddModelError("", "Invalid Credentials");
-            return View();
+            else
+                {
+                    TempData["Msg"] = "Invalid Credentials";
+                    return RedirectToAction("Login");
 
+                }
+                
+            }
+            return View();
         }
+
+        //GET : /Account/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        //POST : /Account/Register
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(UsersTb userinfo)
         {
-            entity.UsersTbs.Add(userinfo);
-            entity.SaveChanges();
-            return RedirectToAction("Login");
-            
+            if (ModelState.IsValid)
+            {
+                entity.UsersTbs.Add(userinfo);
+                entity.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            return View();
         }
+
+
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

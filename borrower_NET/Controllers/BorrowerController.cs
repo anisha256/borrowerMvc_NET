@@ -13,9 +13,37 @@ namespace borrower_NET.Controllers
     {
         BM_DBEntities entity = new BM_DBEntities();
         // GET: Borrower
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string searchValue)
         {
-            return View(entity.BorrowersTbs.ToList());
+            var borrowerList = entity.BorrowersTbs.ToList();
+            if (borrowerList.Count == 0)
+            {
+                TempData["Msg"] = "Currently,database is Empty";
+            }
+            else
+            {
+                //filter
+                if(string.IsNullOrEmpty(searchValue))
+                {
+                    TempData["Msg"] = "Please provide search value";
+                    return View(borrowerList);
+                }
+                else
+                {
+                    if(searchBy == "FullName")
+                    {
+                        var searchByFullName = borrowerList.Where(b => b.FullName == searchValue);
+                        return View(searchByFullName);
+
+                    }
+                    if(searchBy == "Address")
+                    {
+                        var searchByAddress = borrowerList.Where(b => b.Address == searchValue);
+                   return View(searchByAddress);
+                            }
+                }
+            }
+            return View(borrowerList);
         }
 
         //GET: Borrower/Details/1
@@ -32,17 +60,34 @@ namespace borrower_NET.Controllers
             return View();
         }
 
-
         //POST: Borrower/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,FullName,Address,MobileNumber,FundAmount,FundPurpose,BusinessType")] BorrowersTb borrower)
+        public ActionResult Create([Bind(Exclude = "Id")] BorrowersTb borrower)
         {
-            entity.BorrowersTbs.Add(borrower);
-            entity.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    entity.BorrowersTbs.Add(borrower);
+                    entity.SaveChanges();
+                    TempData["Msg"] = "Borrower Added Successfully";
+                    return RedirectToAction("Create");
 
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch (Exception e)
+            {
+                TempData["Msg"] = "Failed to add Borrower" + e.Message;
+                return RedirectToAction("Create");
 
+            }
         }
+
+
         //GET: Borrower/Delete/id
         public ActionResult Delete(int? id)
         {
@@ -85,7 +130,7 @@ namespace borrower_NET.Controllers
         {
             if (ModelState.IsValid)
             {
-               entity.Entry(borrower).State = EntityState.Modified;
+                entity.Entry(borrower).State = EntityState.Modified;
                 entity.SaveChanges();
                 return RedirectToAction("index");
 

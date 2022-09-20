@@ -5,13 +5,49 @@
 }
 
 <h2>Borrower List</h2>
+<div>
+    <div style="float:right; margin-bottom:20px;">
 
-    <div  style="float:right; margin-bottom:20px;">
-            @Html.ActionLink("Add New", "Create", "Borrower", new {@style= "text-decoration: none; color:white;" }, new {@class="btn btn-success bi bi-plus"})
+        @using (Html.BeginForm("Index", "Borrower", FormMethod.Get))
+        {
+            <table>
+                <tr>
+                    <td>
+                        <span><b>Search By</b> </span>
+                        @Html.RadioButton("searchBy", "FullName", true)
+                        <text>Name</text>
+                        @Html.RadioButton("searchBy", "Address")
+                        <text>Address</text>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBox("searchValue", null, new { @class = "form-control me-sm-2", placeHolder = "Search by borrower name or address" })
+
+                    </td>
+                    <td>
+                        <input type="submit" value="Search" class="btn btn-secondary my-2 my-sm-0" />
+                        @Html.ActionLink("Add New", "Create", "Borrower", new { @class = "btn btn-success bi bi-plus" })
+
+                    </td>
+           
+
+                </tr>
+            </table>
+        }
     </div>
+
+</div>
+
+
+    
     
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>
@@ -31,6 +67,9 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
@@ -43,8 +82,8 @@
                 @Html.DisplayFor(modelItem => item.FundAmount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary bi bi-pencil-square"})| 
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new {@class = "btn btn-info bi bi-eye"}) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary bi bi-pencil-square" })  |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info bi bi-eye" })  |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger bi bi-trash" })
             </td>
         </tr>
