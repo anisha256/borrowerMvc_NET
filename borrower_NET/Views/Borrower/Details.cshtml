@@ -5,69 +5,74 @@
 }
 
 
-<h2>Borrower Details</h2>
-<div>
+<h2> @Html.DisplayFor(model => model.FullName) Details </h2>
+
 
     <hr />
+    <div class="well">
+        <dl class="dl-horizontal">
 
-    <dl class="dl-horizontal">
+            <h4 style="color:blue;">Personal Information</h4>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName):
+            </dt>
 
-        <h4 style="color:blue;">Personal Information</h4>
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address):
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MobileNumber):
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MobileNumber)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MobileNumber)
-        </dd>
+        </dl>
+    </div>
 
-    </dl>
     <hr />
-    <dl class="dl-horizontal">
-        <h4 style="color:blue">Fund Related Information</h4>
-        <dt>
-            @Html.DisplayNameFor(model => model.FundAmount)
-        </dt>
+    <div class="well">
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.FundAmount)
-        </dd>
+            <h4 style="color:blue">Fund Related Information</h4>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.FundAmount):
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FundPurpose)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FundAmount)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FundPurpose)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FundPurpose):
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BusinessType)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FundPurpose)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BusinessType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BusinessType):
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.BusinessType)
+            </dd>
+        </dl>
+    </div>
     <hr />
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>

@@ -3,13 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-@if (TempData["InfoMessage"]!= null )
-{
+@{ 
+       
+        if(TempData["InfoMessage"] != null)
+        {
     <div class="well">
         @TempData["InfoMessage"].ToString()
     </div>
+
+} 
 }
-      
+
 <div>
     <div style="float:right; margin-bottom:20px;margin-top:20px;">
 
@@ -48,11 +52,9 @@
 
 
 
-<table class="table">
+<table class="table well">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>
@@ -65,15 +67,16 @@
         <th>
             @Html.DisplayNameFor(model => model.FundAmount)
         </th>
-        <th>Options</th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessType)
+        </th>
+        <th style="text-align: center;">Options</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
@@ -87,8 +90,11 @@
                 @Html.DisplayFor(modelItem => item.FundAmount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary bi bi-pencil-square" })  |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info bi bi-eye" })  |
+                @Html.DisplayFor(modelItem => item.BusinessType)
+            </td>
+            <td style="text-align: center;">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary bi bi-pencil-square" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info bi bi-eye" }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger bi bi-trash" })
             </td>
         </tr>
