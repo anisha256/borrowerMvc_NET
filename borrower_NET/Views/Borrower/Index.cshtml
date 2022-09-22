@@ -3,18 +3,23 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Borrower List</h2>
+@if (TempData["InfoMessage"]!= null )
+{
+    <div class="well">
+        @TempData["InfoMessage"].ToString()
+    </div>
+}
+      
 <div>
-    <div style="float:right; margin-bottom:20px;">
+    <div style="float:right; margin-bottom:20px;margin-top:20px;">
 
         @using (Html.BeginForm("Index", "Borrower", FormMethod.Get))
         {
             <table>
                 <tr>
                     <td>
-                        <span><b>Search By</b> </span>
-                        @Html.RadioButton("searchBy", "FullName", true)
+                        <span><b>Search By:</b> </span>
+                        @Html.RadioButton("searchBy", "FullName",true)
                         <text>Name</text>
                         @Html.RadioButton("searchBy", "Address")
                         <text>Address</text>
@@ -23,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        @Html.TextBox("searchValue", null, new { @class = "form-control me-sm-2", placeHolder = "Search by borrower name or address" })
+                        @Html.TextBox("searchValue",null,new { @class = "form-control me-sm-2", placeHolder = "Search by borrower name or address" })
 
                     </td>
                     <td>
@@ -31,7 +36,7 @@
                         @Html.ActionLink("Add New", "Create", "Borrower", new { @class = "btn btn-success bi bi-plus" })
 
                     </td>
-           
+
 
                 </tr>
             </table>
@@ -41,8 +46,8 @@
 </div>
 
 
-    
-    
+
+
 <table class="table">
     <tr>
         <th>

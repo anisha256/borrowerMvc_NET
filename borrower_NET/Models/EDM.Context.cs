@@ -28,5 +28,9 @@ namespace borrower_NET.Models
         public virtual DbSet<BorrowersTb> BorrowersTbs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UsersTb> UsersTbs { get; set; }
+
+        public System.Data.Entity.DbSet<borrower_NET.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<borrower_NET.Models.Borrower> Borrowers { get; set; }
     }
 }

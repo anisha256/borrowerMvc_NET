@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using borrower_NET.Models;
 using System.Linq;
 using System.Data.Entity;
+using System.Web.WebPages;
+using Microsoft.Ajax.Utilities;
 
 namespace borrower_NET.Controllers
 {
@@ -16,32 +18,39 @@ namespace borrower_NET.Controllers
         public ActionResult Index(string searchBy, string searchValue)
         {
             var borrowerList = entity.BorrowersTbs.ToList();
+
             if (borrowerList.Count == 0)
             {
-                TempData["Msg"] = "Currently,database is Empty";
+                TempData["InfoMessage"] = "Currently,database is Empty";
             }
             else
             {
                 //filter
-                if(string.IsNullOrEmpty(searchValue))
+                if (string.IsNullOrEmpty(searchValue))
                 {
-                    TempData["Msg"] = "Please provide search value";
+                   // TempData["InfoMessage"] = "Please provide search value";
                     return View(borrowerList);
+
                 }
                 else
                 {
-                    if(searchBy == "FullName")
+
+                    if (searchBy == "FullName")
                     {
-                        var searchByFullName = borrowerList.Where(b => b.FullName == searchValue);
+                        var searchByFullName = borrowerList.Where(b => b.FullName.Contains(searchValue));
                         return View(searchByFullName);
 
                     }
-                    if(searchBy == "Address")
+                   
+                    
+                    if (searchBy == "Address")
                     {
                         var searchByAddress = borrowerList.Where(b => b.Address == searchValue);
-                   return View(searchByAddress);
-                            }
+                        return View(searchByAddress);
+                    }
+                  
                 }
+                
             }
             return View(borrowerList);
         }

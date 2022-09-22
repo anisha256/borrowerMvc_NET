@@ -51,6 +51,8 @@ C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\roslyn\vbc.rsp
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\roslyn\VBCSCompiler.exe
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\Antlr3.Runtime.dll
+C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.dll
+C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.SqlServer.dll
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\System.Web.WebPage
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\System.Web.WebPages.dll
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\System.Web.WebPages.Razor.dll
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\WebGrease.dll
+C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.xml
+C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.SqlServer.xml
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\System.Web.Helpers.xml
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\System.Web.Mvc.xml
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\System.Web.Optimization.xml
@@ -77,7 +81,3 @@ C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\obj\Debug\borrower_NET
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\obj\Debug\borrower_NET.csproj.CopyComplete
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\obj\Debug\borrower_NET.dll
 C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\obj\Debug\borrower_NET.pdb
-C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.dll
-C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.SqlServer.dll
-C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.xml
-C:\Users\arung\OneDrive\Desktop\borrower_NET\borrower_NET\bin\EntityFramework.SqlServer.xml

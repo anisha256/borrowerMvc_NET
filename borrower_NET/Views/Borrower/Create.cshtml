@@ -1,4 +1,4 @@
-﻿@model borrower_NET.Models.BorrowersTb
+﻿@model borrower_NET.Models.Borrower
 
 @{
     ViewBag.Title = "Create";
@@ -6,8 +6,8 @@
 @if (TempData["Msg"] != null)
 
 {
-    <div class="well">
-        @TempData["Msg"].ToString()
+    <div class="alert alert-dismissible alert-success" style="margin-top:10px">
+        <strong>Well done!</strong>Success!!<a href="#" class="alert-link"> @TempData["Msg"].ToString()</a>.
     </div>
 }
 

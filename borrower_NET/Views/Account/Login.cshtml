@@ -9,8 +9,9 @@
     <div>
         @if (TempData["Msg"] != null)
         {
-            <div class="well" style="margin-top:5px">
-                @TempData["Msg"].ToString()
+            
+            <div class="alert alert-dismissible alert-danger" style="margin-top:10px"> 
+                <strong>Wrong!</strong> <a href="#" class="alert-link"> @TempData["Msg"].ToString()</a>
             </div>
         }
         <div>
