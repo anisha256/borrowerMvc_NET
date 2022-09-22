@@ -12,7 +12,7 @@ namespace borrower_NET.Controllers
     public class AccountController : Controller
     {
         BM_DBEntities entity = new BM_DBEntities();
- 
+
         // GET: Account/Login
         public ActionResult Login()
         {
@@ -26,22 +26,22 @@ namespace borrower_NET.Controllers
         {
             if (ModelState.IsValid)
             {
-            bool userExists = entity.UsersTbs.Any(x=>x.Username == credentials.Username && x.Pincode == credentials.Pincode);
-           //gives one username if present
-            UsersTb u = entity.UsersTbs.FirstOrDefault(x => x.Username == credentials.Username && x.Pincode == credentials.Pincode);
-            if (userExists)
-            {
-              
-                FormsAuthentication.SetAuthCookie(u.Username,false);
-                return RedirectToAction("Index","Borrower");
-            }
-            else
+                bool userExists = entity.UsersTbs.Any(x => x.Username == credentials.Username && x.Pincode == credentials.Pincode);
+                //gives one username if present
+                UsersTb u = entity.UsersTbs.FirstOrDefault(x => x.Username == credentials.Username && x.Pincode == credentials.Pincode);
+                if (userExists)
+                {
+
+                    FormsAuthentication.SetAuthCookie(u.Username, false);
+                    return RedirectToAction("Index", "Borrower");
+                }
+                else
                 {
                     TempData["Msg"] = "Invalid Credentials";
                     return RedirectToAction("Login");
 
                 }
-                
+
             }
             return View();
         }
@@ -57,16 +57,26 @@ namespace borrower_NET.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "Id,FullName,Username,MobileNumber,EmailId,Pincode")] UsersTb user)
         {
-            if (ModelState.IsValid)
+            try
             {
-                entity.UsersTbs.Add(user);
-                entity.SaveChanges();
-                TempData["RegMsg"] = "Registration Successful";
+                if (ModelState.IsValid)
+                {
+                    entity.UsersTbs.Add(user);
+                    entity.SaveChanges();
+                    TempData["RegMsg"] = "Registration Successful";
+                    return RedirectToAction("Register");
+                }
+                return View();
+
+            }
+            catch (Exception e)
+            {
+                TempData["RegMsg"] = "Failed to Register" + e.Message;
 
                 return RedirectToAction("Register");
 
+
             }
-            return View();
         }
 
 
@@ -75,36 +85,7 @@ namespace borrower_NET.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
-
-        public ActionResult Register2()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register2( UsersTb userinfo)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    entity.UsersTbs.Add(userinfo);
-                    entity.SaveChanges();
-                    TempData["RegMsg"] = "Registration Successful";
-                    return RedirectToAction("Register2");
-                }
-                return View();
-
-            }
-            catch(Exception e)
-            {
-                TempData["RegMsg"] = "Failed to Register"+ e.Message;
-
-                return RedirectToAction("Register2");
-
-
-            }
-
-        }
     }
 }
+
+     
